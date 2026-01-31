@@ -8,7 +8,7 @@
 <body>
 
     <h3>Nhập thông tin</h3>
-    <form action="nhanbien.php" method="GET">
+    <form action="nhanbien.php" method="REQUEST">
         Nhập Họ và tên 
         <input type="text" name="txtHoTen"/>
         <input type="submit" value="Gửi"/>
