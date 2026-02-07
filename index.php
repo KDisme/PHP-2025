@@ -13,5 +13,6 @@
     <a href="./Tuan1"><H1>Tuần 1</H1></a>
      <a href="./Tuan2"><H1>Tuần 2</H1></a>
      <a href="./SESSION"><H1>SESSION</H1></a>
+     <a href="./KTTK">KTTK</a>
 </body>
 </html>
