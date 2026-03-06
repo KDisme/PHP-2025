@@ -15,7 +15,7 @@
         $host = "localhost";
         $user = "khanhduy"; 
         $pass = "123456"; 
-        $db = "quanlytintuc"; 
+        $db = "tintuc"; 
         $con = mysqli_connect($host,$user,$pass,$db);
         if($con){
             $strLogin  = "Select * from nguoidung where username ='$ID' and password = '$passuser'" ;
@@ -31,7 +31,7 @@
                 echo "Sai thong tin dang nhap";
             }
             $con->close();
-            // // doc du lieu
+            // doc du lieu
             // $read = "Select * from LoaiTin";
             // $ketqua = $con->query($read);
             // if($ketqua->num_rows > 0){
@@ -74,8 +74,8 @@
     }
     if(!isset($_SESSION["login"])){
         echo ' <form action="#" method="POST">
-        User_name: <input type="text" name="txtID" id="">
-        Password:  <input type="password" name="txtPass" id="">
+        Username: <input type="text" name="txtID" id=""> <br> <br>
+        Password:  <input type="password" name="txtPass" id=""> <br> <br>
         <input type="submit" value="Login" name="login">
     </form>';
     }else{

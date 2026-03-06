@@ -19,7 +19,7 @@
         $host = "localhost";
         $user = "khanhduy"; 
         $pass = "123456"; 
-        $db = "quanlytintuc"; 
+        $db = "tintuc"; 
         $con = mysqli_connect($host,$user,$pass,$db);
         if($con){
             $strLogin  = "Select * from loaitin" ;

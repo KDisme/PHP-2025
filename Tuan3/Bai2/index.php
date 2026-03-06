@@ -14,15 +14,6 @@
     
 </body>
     <?php
-        if(isset($_POST["submit"]) && isset($_FILES["file"])){
-            $file = $_FILES["file"];
-            echo "Type = ".$file["type"]."<br>";
-            echo "Size = ".$flie["size"]."<br>";
-            echo "Full name = ".$file["name"]."<br>";
-            echo "Temp = " .$file["tmp_name"]."<br>";
-        }
-        if(checksize($file["size"])){
-
         function checksize($size){
             if($size < 2*1024*1024){
                 return true;
@@ -41,6 +32,15 @@
         }
             return false;
         }
-    }
+        if(isset($_POST["submit"]) && isset($_FILES["file"])){
+            $file = $_FILES["file"];
+            echo "Type = ".$file["type"]."<br>";
+            echo "Size = ".$flie["size"]."<br>";
+            echo "Full name = ".$file["name"]."<br>";
+            echo "Temp = " .$file["tmp_name"]."<br>";
+        }
+        if(checksize($file["size"]))
+
+        
     ?>
 </html>
