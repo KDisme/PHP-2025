@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
     session_start();
     if(!isset($_SESSION['loai']) || $_SESSION['loai'] == "1")
@@ -52,3 +53,5 @@
 
 </body>
 </html>
+=======
+>>>>>>> d9c2994535a8ae4de39c2d2067321c5d8f544135
