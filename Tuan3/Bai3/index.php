@@ -14,24 +14,40 @@
 	<div class="result-box">
 	<?php
 	if (isset($_POST['upload']) && isset($_FILES['files'])) {
+		$uploadDir = __DIR__ . "/img/";
+		if (!is_dir($uploadDir)) {
+			mkdir($uploadDir, 0777, true);
+		}
+
 		$files = $_FILES['files'];
 		for ($i = 0; $i < count($files['name']); $i++) {
 			if ($files['error'][$i] === UPLOAD_ERR_OK) {
-				$name = $files['name'][$i];
+				$name     = $files['name'][$i];
 				$tmp_name = $files['tmp_name'][$i];
-				$size = $files['size'][$i];
-				$type = $files['type'][$i];
+				$size     = $files['size'][$i];
+				$type     = $files['type'][$i];
+
+				$ext      = pathinfo($name, PATHINFO_EXTENSION);
+				$basename = pathinfo($name, PATHINFO_FILENAME);
+				$newName  = $basename . "_" . rand(100, 999) . "." . $ext;
+				$dest     = $uploadDir . $newName;
+
 				echo '<div class="file-info">';
-				echo "<b>Tên file ban đầu:</b> $name<br>";
-				echo "<b>Tên file thay đổi:</b> " . basename($tmp_name) . "<br>";
-				echo "<b>Kích thước:</b> " . round($size/1024) . " KB<br>";
-				echo "<b>Loại file:</b> $type<br>";
-				echo "<b>Tên file tạm:</b> $tmp_name<br>";
-				// Hiển thị hình ảnh nếu là file ảnh
-				if (strpos($type, 'image') === 0) {
-					echo '<img src="data:' . $type . ';base64,' . base64_encode(file_get_contents($tmp_name)) . '" alt="Ảnh upload">';
+				echo "<b>Tên file ban đầu:</b> " . htmlspecialchars($name) . "<br>";
+
+				if (move_uploaded_file($tmp_name, $dest)) {
+					echo "<b>Tên file thay đổi:</b> " . htmlspecialchars($newName) . "<br>";
+					echo "<b>Kích thước:</b> " . round($size / 1024) . " KB<br>";
+					echo "<b>Loại file:</b> " . htmlspecialchars($type) . "<br>";
+					echo "<b>Tên file tạm:</b> " . htmlspecialchars($tmp_name) . "<br>";
+
+					if (strpos($type, 'image') === 0) {
+						echo '<img src="img/' . htmlspecialchars($newName) . '" alt="Ảnh upload" style="max-width:300px;">';
+					} else {
+						echo "<i>Không phải file ảnh</i><br>";
+					}
 				} else {
-					echo "<i>Không phải file ảnh</i><br>";
+					echo "<i>Lỗi: Không thể lưu file!</i><br>";
 				}
 				echo '</div>';
 			}
