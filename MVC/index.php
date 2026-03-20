@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table{width: 960px;}
+        table{width: 1000px;}
         #left{width: 30%;}
         #right{width: 70%;}
         td {border: 1px solid black;}
@@ -24,12 +24,28 @@
                 if(isset($_REQUEST['login'])){
                 include ("view/login.php");
                 }
-                if(isset($_REQUEST['register'])){
+                else if(isset($_REQUEST['register'])){
                     include ("view/register.php");
                 }
-
                 ?>
             </td>
+        </tr>
+     </table>
+     <table>
+        <tr>
+            <td id ="left" style="">
+                <?php
+                echo"<h2>Danh mục sản phẩm</h2>";
+                include("view/listType.php");
+                ?>
+            </td>
+            <td id="right">
+                <?php
+                echo"<h2>Danh sách sản phẩm</h2>";
+                include("view/listProduct.php");
+                ?>
+            </td>
+            
         </tr>
      </table>
 </body>

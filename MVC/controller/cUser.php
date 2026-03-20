@@ -1,8 +1,9 @@
 <?php
 session_start();
+include_once("model/mUser.php");
 class cUser {
     public function cLogin($user,$pass){
-        include_once("model/mUser.php");
+        
         $p = new mUser();
         $listUser = $p->mLogin($user,md5($pass));
         if($listUser->num_rows >0)
@@ -18,16 +19,17 @@ class cUser {
     }
 
     public function cRegister($user,$pass){
-        include_once("model/mUser.php");
         $p = new mUser();
-        $listUser = $p->mRegister($user,md5($pass));
-        if($listUser==true)
+        $check = $p ->checkID($user);
+        if($check->num_rows >0)
         {
-            return true;
+            echo "<script>alert('Username đã tồn tại')</script>";
+            return false;
         }
         else
         {
-            return false;
+            $ketqua = $p->mRegister($user,md5($pass));
+            return $ketqua;
         }
     }
 }

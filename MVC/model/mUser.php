@@ -1,7 +1,8 @@
 <?php
+ include_once("mKetnoi.php");
     class mUser{
         public function mLogin($id,$pws){
-            include_once("mKetnoi.php");
+           
             $p = new mKetnoi();
             $con = $p-> moKetnoi();
             if($con) 
@@ -14,12 +15,23 @@
         }
 
         public function mRegister($id,$pws){
-            include_once("mKetnoi.php");
             $p = new mKetnoi();
             $con = $p-> moKetnoi();
             if($con) 
             {
                 $query = "insert into user(username,password) values ('$id','$pws')";
+                $ketqua = $con->query($query);
+                return $ketqua;
+            }
+            $p->dongKetnoi($con);
+        }
+
+        public function checkID($id){
+            $p = new mKetnoi();
+            $con = $p-> moKetnoi();
+            if($con) 
+            {
+                $query = "select * from user where username = '$id'";
                 $ketqua = $con->query($query);
                 return $ketqua;
             }
