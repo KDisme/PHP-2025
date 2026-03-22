@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once("model/mUser.php");
 class cUser {
     public function cLogin($user,$pass){

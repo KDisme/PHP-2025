@@ -6,7 +6,7 @@ class mProduct {
         $p = new mKetnoi();
         $con = $p->moKetnoi();
         if($con){
-            $rs = $con->query("select * from products");
+	        $rs = $con->query("SELECT p.*, t.typeName FROM products p LEFT JOIN type t ON p.idType = t.idType");
             return $rs;
         }
             return false;

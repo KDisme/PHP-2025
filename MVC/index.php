@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,16 +19,29 @@
         <tr>
             <td id="left">
                 <a href="index.php">Trang chủ</a> <br>
-                <a href="index.php?login">Đăng nhập</a><br>
-                <a href="index.php?register">Đăng ký</a>
+                <?php
+                    if (!isset($_SESSION['login'])){
+                        echo'<a href="index.php?login">Đăng nhập</a><br>';
+                        echo'<a href="index.php?register">Đăng ký</a>';
+                    }
+                    else
+                    {
+                        echo '<a href="admin.php">Admin</a><br>';
+                        echo '<a href="index.php?logout" onclick="return confirm(\'Bạn muốn đăng xuất?\')">Đăng xuất</a>';
+                    }
+                ?>
             </td> 
             <td id="right">
                 <?php
                 if(isset($_REQUEST['login'])){
                 include ("view/login.php");
                 }
+
                 else if(isset($_REQUEST['register'])){
-                    include ("view/register.php");
+                include ("view/register.php");
+                } 
+                else if (isset($_REQUEST['logout'])) {
+                include("view/logout.php");
                 }
                 ?>
             </td>
@@ -33,7 +49,7 @@
      </table>
      <table>
         <tr>
-            <td id ="left" style="">
+            <td id ="left">
                 <?php
                 echo"<h2>Danh mục sản phẩm</h2>";
                 include("view/listType.php");
@@ -48,5 +64,8 @@
             
         </tr>
      </table>
+     <footer>
+        <H2>Nguyễn Hoàng Khánh Duy - 22653721</H2>
+     </footer>
 </body>
 </html>

@@ -11,7 +11,7 @@
         $ketqua = $p->cLogin($_REQUEST["txtusername"], $_REQUEST["txtpassword"]);
         if($ketqua==true)
         {
-            echo "<script>alert('Đăng nhập thành công')</script>";
+            echo "<script>alert('Đăng nhập thành công'); window.location.href='admin.php';</script>";
         }else{
             echo "<script>alert('Đăng nhập không thành công')</script>";
         }
