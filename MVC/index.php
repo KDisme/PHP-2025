@@ -57,6 +57,7 @@
             </td>
             <td id="right">
                 <?php
+                include("view/search.php");
                 echo"<h2>Danh sách sản phẩm</h2>";
                 include("view/listProduct.php");
                 ?>

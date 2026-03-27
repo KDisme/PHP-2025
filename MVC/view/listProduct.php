@@ -5,7 +5,17 @@ include_once("controller/cProduct.php");
 echo "<style>.price-old{color:#c00;text-decoration:line-through;margin-right:6px}.price-sale{color:#000;font-weight:700}</style>";
 
 $p=new cProduct();
-$rs = $p -> cListProduct();
+if(isset($_REQUEST['idType'])){
+    $rs = $p -> cListProductByType($_REQUEST['idType']);
+}
+elseif(isset($_REQUEST['btnTimkiem'])){
+
+$rs = $p -> cListProductByTen($_REQUEST['ten']);
+}
+else{
+    $rs = $p -> cListProduct();
+}
+
 if(!$rs){
     echo"khong co san pham";
 }else

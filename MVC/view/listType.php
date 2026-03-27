@@ -7,7 +7,7 @@ if(!$ketqua){
     echo "khong co dulieu";
 }else {
 while($r = $ketqua -> fetch_assoc()){
-    echo"<li><a href='#'>".$r['typeName']."</a></li>";
+    echo"<a href='?idType=".$r['idType']."'>".$r['typeName']."</a> <br>";
 }
 
 }

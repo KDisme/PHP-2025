@@ -1,9 +1,19 @@
 <?php
-// Expect: $rs (mysqli_result|false)
+include("controller/cProduct.php");
+$p=new cProduct();
+if(isset($_REQUEST['idType'])){
+    $rs = $p -> cListProductByType($_REQUEST['idType']);
+}
+elseif(isset($_REQUEST['btnTimkiem'])){
 
-if (!$rs) {
-	echo "Không có dữ liệu sản phẩm";
-	return;
+$rs = $p -> cListProductByTen($_REQUEST['ten']);
+}
+else{
+    $rs = $p -> cListProduct();
+}
+
+if(!$rs){
+    echo"khong co san pham";
 }
 
 echo "<table class='admin-table'>";

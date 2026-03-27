@@ -1,6 +1,8 @@
 <?php
-// Expect: $rs (mysqli_result|false)
+include_once("controller/cType.php");
 
+$p = new cType();
+$rs = $p -> cListType();
 if (!$rs) {
 	echo "Không có dữ liệu thương hiệu";
 	return;
