@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table{width: 1000px;}
+        .layout-table{width: 100%; max-width: 1400px; margin: 0 auto; border-collapse: collapse;}
         #left{width: 30%;}
         #right{width: 70%;}
         td {border: 1px solid black;}
     </style>
 </head>
 <body>
-     <table>
+     <table class="layout-table">
         <tr>
             <td id="left">
                 <a href="index.php">Trang chủ</a> <br>
@@ -47,7 +47,7 @@
             </td>
         </tr>
      </table>
-     <table>
+     <table class="layout-table">
         <tr>
             <td id ="left">
                 <?php
@@ -65,8 +65,8 @@
             
         </tr>
      </table>
-     <footer>
-        <H2>Nguyễn Hoàng Khánh Duy - 22653721</H2>
-     </footer>
+      <footer style="text-align:center;">
+          <h2>Nguyễn Hoàng Khánh Duy - 22653721</h2>
+      </footer>
 </body>
 </html>

@@ -20,7 +20,7 @@ if (!isset($_SESSION['login'])) {
 </style>
 
 <div class="admin-wrap">
-	<img src="image/admin.jpg"><br>	
+	<img src="image/admin.jpg" style="width:100%; height:500px; object-fit:fill;"><br>   
 	<a href="index.php">Trang chủ</a> |
 	<a href="index.php?logout" onclick="return confirm('Bạn muốn đăng xuất?')">Đăng xuất</a>
 
@@ -54,7 +54,7 @@ if (!isset($_SESSION['login'])) {
 			</td>
 		</tr>
 	</table>
-	<footer>
+	<footer style="text-align:center;">
         <H2>Nguyễn Hoàng Khánh Duy - 22653721</H2>
      </footer>
 	
