@@ -31,8 +31,12 @@ if (!isset($_SESSION['login'])) {
 		<tr>
 			<td class="admin-left">
 				<div class="admin-menu">
-					<h2><a href="admin.php?sanpham">Quản lý sản phẩm</a></h2>
-					<h2><a href="admin.php?thuonghieu">Quản lý thương hiệu</a></h2>
+					<h2>Quản lý sản phẩm</h2>
+					<ul><a href="admin.php?sanpham">Xem danh sách sản phẩm</a></ul>
+					<ul><a href="admin.php?themsp">Thêm sản phẩm</a></ul>
+					<h2>Quản lý thương hiệu</h2>
+					<ul><a href="admin.php?thuonghieu">Xem danh sách thương hiệu</a></ul>
+					
 				
 					
 				</div>
@@ -46,6 +50,9 @@ if (!isset($_SESSION['login'])) {
 				elseif (isset($_REQUEST['sanpham'])) {
 					echo "<h3>Danh sách sản phẩm</h3>";
 					include("view/adminProducts.php");
+				}
+				elseif(isset($_REQUEST['themsp'])){
+					include_once("view/adminAddSanPham.php");
 				}
 				else {
 					echo "<h1>Chào mừng đến với trang admin</h1>";

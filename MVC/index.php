@@ -1,5 +1,8 @@
 <?php
     session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,16 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .layout-table{width: 100%; max-width: 1400px; margin: 0 auto; border-collapse: collapse;}
-        #left{width: 30%;}
-        #right{width: 70%;}
-        td {border: 1px solid black;}
+        .layout-table{width: 100%; margin: 0 auto; border-collapse: collapse;}
+        #left{width: 20%; }
+        #right{width: 80%;}
+        td {border: 1px solid black; vertical-align: top;}
+        img {max-width: 100%; height: auto; display: block;}
     </style>
 </head>
 <body>
      <table class="layout-table">
         <tr>
             <td id="left">
+                <img src="image/banner.jpg" style="width:100%; height:500px; object-fit:fill;">
                 <a href="index.php">Trang chủ</a> <br>
                 <?php
                     if (!isset($_SESSION['login'])){
@@ -30,21 +35,8 @@
                         echo '<a href="index.php?logout" onclick="return confirm(\'Bạn muốn đăng xuất?\')">Đăng xuất</a>';
                     }
                 ?>
+              
             </td> 
-            <td id="right">
-                <?php
-                if(isset($_REQUEST['login'])){
-                include ("view/login.php");
-                }
-
-                else if(isset($_REQUEST['register'])){
-                include ("view/register.php");
-                } 
-                else if (isset($_REQUEST['logout'])) {
-                include("view/logout.php");
-                }
-                ?>
-            </td>
         </tr>
      </table>
      <table class="layout-table">
@@ -57,9 +49,23 @@
             </td>
             <td id="right">
                 <?php
-                include("view/search.php");
+                if(isset($_REQUEST['login'])){
+                include ("view/login.php");
+                }
+
+                else if(isset($_REQUEST['register'])){
+                include ("view/register.php");
+                } 
+                else if (isset($_REQUEST['logout'])) {
+                include("view/logout.php");
+                }
+                else {
+
+                     include("view/search.php");
                 echo"<h2>Danh sách sản phẩm</h2>";
-                include("view/listProduct.php");
+                include("view/listProduct.php");    
+                }
+               
                 ?>
             </td>
             

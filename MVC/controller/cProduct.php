@@ -1,5 +1,6 @@
 <?php
 include_once("model/mProduct.php");
+include_once("controller/cUpload.php");
 
 class cProduct{
     public function cListProduct(){
@@ -28,5 +29,18 @@ class cProduct{
         }
             return false;
     }
+     public function cInsertProduct($name, $price, $salePrice, $fileImage, $idType){
+            if($fileImage["tmp_name"] != ""){
+                $p = new cUpLoad();
+                $result = $p->cUpLoadAnh($fileImage, $name, $image);
+                if(!$result){
+                    return false;
+                }
+            }
+            $p = new mProduct();
+            $result = $p->mInsertProduct($name, $price, $salePrice, $image, $idType);
+            return $result; 
+        }
+    
 }
 ?>

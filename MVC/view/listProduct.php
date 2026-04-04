@@ -17,7 +17,7 @@ else{
 }
 
 if(!$rs){
-    echo"khong co san pham";
+    echo"Không có sản phẩm!";
 }else
 
 {
@@ -26,12 +26,12 @@ if(!$rs){
     $dem=0;
     while($r = $rs -> fetch_assoc()){
         echo"<td>";
-        echo"<img src='image/".$r['image']." 'width=150px'/> <br>";
+        echo"<img src='image/".$r['image']."' width='150' height='150' alt=''/> <br>";
         echo"<b><a href=''>".$r['productName']."</a></b><br>";
 		$price = (float)($r['productPrice'] ?? 0);
 		$sale = (float)($r['salePrice'] ?? 0);
 		if ($sale > 0 && $sale < $price) {
-			echo "<span class='price-old'>".number_format($price,0,".",".")."đ</span>";
+			echo "<span class='price-old'>".number_format($price,0,".",".")."đ</span> <br>";
 			echo "<span class='price-sale'>".number_format($sale,0,".",".")."đ</span>";
 		} else {
 			echo "<span class='price-sale'>".number_format($price,0,".",".")."đ</span>";
