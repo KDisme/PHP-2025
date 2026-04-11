@@ -9,7 +9,7 @@
         include_once("controller/cUser.php");
         $p = new cUser();
         $ketqua = $p->cLogin($_REQUEST["txtusername"], $_REQUEST["txtpassword"]);
-        if($ketqua==true)
+        if($ketqua)
         {
             echo "<script>alert('Đăng nhập thành công'); window.location.href='admin.php';</script>";
         }else{

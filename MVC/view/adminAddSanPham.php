@@ -24,8 +24,8 @@ Thương Hiệu  <select name="txtType" id="txtType">
                 }
 ?>
 </select> <br>
-<input type="submit" name="Them">
-<input type="reset" name="Nhap Lai">
+<input type="submit" name="Them" value="Thêm sản phẩm">
+<input type="reset" name="NhapLai" value="Nhập lại">
 
 </form>
 

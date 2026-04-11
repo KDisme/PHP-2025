@@ -8,6 +8,9 @@ class cUser {
         if($listUser->num_rows >0)
         {
             $_SESSION['login'] = true;
+            while($row = $listUser->fetch_assoc()){
+                $_SESSION['role'] = $row['idRole'];
+            }
             return true;
         }
         else
@@ -31,5 +34,40 @@ class cUser {
             return $ketqua;
         }
     }
+
+    public function cListUser(){
+        $p = new mUser();
+        $ketqua = $p->mListUser();
+        if($ketqua->num_rows > 0){
+            return $ketqua; 
+        }
+            return false;
+    }
+
+      public function cListRole(){
+        $p = new mUser();
+        $ketqua = $p->mListRole();
+        if($ketqua->num_rows > 0){
+            return $ketqua; 
+        }
+            return false;
+    }
+
+    public function cAddUser($user,$pass,$r){
+        $p = new mUser();
+        $check = $p ->checkID($user);
+        if($check->num_rows >0)
+        {
+            echo "<script>alert('Username đã tồn tại')</script>";
+            return false;
+        }
+        else
+        {
+            $ketqua = $p->mAddUser($user,md5($pass),$r);
+            return $ketqua;
+        }
+    }
+
+    
 }
 ?>

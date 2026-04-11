@@ -39,6 +39,9 @@ class cProduct{
             }
             $p = new mProduct();
             $result = $p->mInsertProduct($name, $price, $salePrice, $image, $idType);
+            if(!$result){
+                echo"Thêm sản phẩm thất bại";
+            }
             return $result; 
         }
     

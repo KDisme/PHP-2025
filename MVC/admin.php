@@ -1,8 +1,8 @@
 
 <?php
 	session_start();
-if (!isset($_SESSION['login'])) {
-	echo "<script>alert('Bạn không có quyền truy cập'); window.location.href='index.php?login';</script>";
+if (!isset($_SESSION['login']) || $_SESSION['role'] == 3) {
+	echo "<script>alert('Bạn không có quyền truy cập'); window.location.href='index.php';</script>";
 	exit;
 }
 ?>
@@ -36,24 +36,41 @@ if (!isset($_SESSION['login'])) {
 					<ul><a href="admin.php?themsp">Thêm sản phẩm</a></ul>
 					<h2>Quản lý thương hiệu</h2>
 					<ul><a href="admin.php?thuonghieu">Xem danh sách thương hiệu</a></ul>
-					
-				
+					<?php
+						if($_SESSION['role'] == 1){
+							echo"<h2>Quản lý người dùng</h2>";
+							echo'<ul><a href="admin.php?nguoidung">Xem danh sách người dùng</a></ul>';
+							echo'<ul><a href="admin.php?themnguoidung">Thêm người dùng</a></ul>';
+						}
+					?>
 					
 				</div>
 			</td>
 			<td class="admin-right">
 				<?php
-				if (isset($_REQUEST['thuonghieu'])) {
-					echo "<h3>Danh sách thương hiệu</h3>";
-					include("view/adminTypes.php");
+				
+					if (isset($_REQUEST['thuonghieu'])) {
+						echo "<h3>Danh sách thương hiệu</h3>";
+						include("view/adminTypes.php");
 				}
-				elseif (isset($_REQUEST['sanpham'])) {
-					echo "<h3>Danh sách sản phẩm</h3>";
-					include("view/adminProducts.php");
+					elseif (isset($_REQUEST['sanpham'])) {
+						echo "<h3>Danh sách sản phẩm</h3>";
+						include("view/adminProducts.php");
 				}
-				elseif(isset($_REQUEST['themsp'])){
-					include_once("view/adminAddSanPham.php");
+					elseif(isset($_REQUEST['themsp'])){
+						include_once("view/adminAddSanPham.php");
 				}
+			
+			
+					elseif(isset($_REQUEST['nguoidung'])){
+						echo "<h3>Danh sách người dùng</h3>";
+						include_once("view/adminUser.php");
+				}	elseif(isset($_REQUEST['themnguoidung'])){
+						echo "<h3>Thêm người dùng</h3>";
+						include_once("view/adminAddUser.php");
+				}
+					
+				
 				else {
 					echo "<h1>Chào mừng đến với trang admin</h1>";
 				}

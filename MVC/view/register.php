@@ -9,7 +9,7 @@
         include_once("controller/cUser.php");
         $p = new cUser();
         $ketqua = $p->cRegister($_REQUEST["txtusername"], $_REQUEST["txtpassword"]);
-        if($ketqua==true)
+        if($ketqua)
         {
             echo "<script>alert('Đăng ký thành công'); window.location='index.php?login';</script>";
         }else{
