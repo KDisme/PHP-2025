@@ -8,9 +8,7 @@ class cUser {
         if($listUser->num_rows >0)
         {
             $_SESSION['login'] = true;
-            while($row = $listUser->fetch_assoc()){
-                $_SESSION['role'] = $row['idRole'];
-            }
+            $_SESSION['role'] = $listUser->fetch_array()["idRole"];
             return true;
         }
         else
