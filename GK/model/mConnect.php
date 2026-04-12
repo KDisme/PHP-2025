@@ -1,11 +1,11 @@
 <?php
     class mConnect{
-        public function moKetNoi(){
-            return mysqli_connect("localhost","root","","qlbh");
+        public function moKetnoi(){
+            return mysqli_connect("localhost", "root","","qlbh");
         }
 
         public function dongKetNoi($con){
-           $con -> close();
+            $con->close();
         }
     }
 ?>

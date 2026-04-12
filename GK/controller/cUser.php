@@ -1,26 +1,32 @@
 <?php
-    include_once("model/mUser.php");
-
+include_once("model/mUser.php");
     class cUser{
-        public function cRegister($u,$pw){
+        public function cDangky($tk,$mk){
             $p = new mUser();
-            $kq = $p->mCheckID($u);
-            if($kq -> num_rows>0){
-                echo"<script>alert('Username da ton tai')</script>";
-                return false;
-            }   
-            else 
-                 return $p->mRegister($u,md5($pw));
+            $check = $p->mKTTK($tk);
+            if($check -> num_rows >0){
+                return -1;
+            }else
+            {
+                $kq = $p->mDangky($tk,md5($mk));
+                if($kq){
+                    return 1;
+                }else
+                    return 0;
+            }        
         }
 
-        public function cLogin($u,$pw){
+        public function cDangnhap($tk,$mk){
             $p = new mUser();
-            if($p->mLogin($u,md5($pw)) -> num_rows>0){
-                 $_SESSION['login'] = true;
-                return true;
-            }   
-            else 
-                 return false;
+            $kq = $p->mDangnhap($tk,md5($mk));
+            if($kq->num_rows>0){
+                $_SESSION['login'] = true;
+                $_SESSION['role'] = $kq->fetch_assoc()['idRole'];
+                return 1;
+            }else
+                return 0;       
         }
     }
+
+    
 ?>

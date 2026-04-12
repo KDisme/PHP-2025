@@ -9,36 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-        <a href="index.php">Trang Chu</a>
-        <?php
-            if(!isset($_SESSION['login'])){
-                echo'<a href="index.php?register">Dang Ky</a>';
-                echo'<a href="index.php?login">Dang nhap</a>';
-
-            }else{
-                echo'<a href="admin.php">Admin</a>';
-                echo'<a href="index.php?logout">Dang xuat</a>';
-            }
+    <a href="index.php">Trang Chu</a> |
+    <a href="index.php?dangky">Dang Ky</a> |    
+    <?php
+        if(isset($_SESSION['login'])){
             
-            
-            
-        ?>
+        }
+    ?>
 
-
-        <?php  
-            if(isset($_REQUEST['register'])){
-                echo" <h2>Dang Ky</h2>";
-                include_once("view/vRegister.php");
-            }
-            elseif(isset($_REQUEST['login'])){
-                echo" <h2>Dang nhap</h2>";
-                include_once("view/vLogin.php");
-            }
-             elseif(isset($_REQUEST['logout'])){
-                include_once("view/vLogout.php");
-            }
-        
-        ?>
-       
+    <?php
+        if(isset($_REQUEST['dangky'])){
+            include_once("view/vRegister.php");
+        }
+    ?>
 </body>
 </html>

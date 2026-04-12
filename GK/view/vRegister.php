@@ -1,19 +1,25 @@
-<?php
-    include_once("controller/cUser.php");
-?>
-
 <form action="" method="post">
-    Username: <input type="text" name="txtusername"> <br>
-    Password: <input type="password" name="txtpassword"> <br>
-    <input type="submit" name="btnregister" value="Dang ky">
+    Tai khoan: <input type="text" name="txtTK"> <br>
+    Mat Khau: <input type="password" name="txtMK"> <br>
+    <input type="submit" name="btnDK" value = "Dang Ky">
 </form>
 
 <?php
-    $p = new cUser();
-    if(isset($_REQUEST['txtusername']) && isset($_REQUEST['txtpassword'])){
-        if($p->cRegister($_REQUEST['txtusername'],$_REQUEST['txtpassword'])){
-            echo"<script>alert('Dang ky thanh cong'); window.location.href='index.php?login'</script>";
+include_once("controller/cUser.php");
+
+    if(isset($_REQUEST['btnDK'])){
+        $p = new cUser();
+        $kq = $p->cDangky($_REQUEST['txtTK'],$_REQUEST['txtMK']);
+        if($kq == 1){
+            echo"<script>alert('Dang ky thanh cong!'); window.location.href='index.php?dangnhap'</script>";
         }
-            echo"<script>alert('Dang ky khong thanh cong'); window.location.href='index.php?register'</script>";
+        elseif($kq == -1){
+            echo"<script>alert('Tai khoan da ton tai'); window.location.href='index.php?dangky'</script>";
+        }else{
+            echo"<script>alert('Dang ky khong thanh cong!'); window.location.href='index.php?dangky'</script>";
+        }
+        
+
     }
+    
 ?>
