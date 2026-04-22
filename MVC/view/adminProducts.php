@@ -17,23 +17,22 @@ if(!$rs){
 }
 
 echo "<table class='admin-table'>";
-echo "<tr><th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Giá sale</th><th>Hình</th><th>Loại</th></tr>";
+echo "<tr><th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Giá sale</th><th>Hình</th><th>Loại</th><th>Thao tác</th></tr>";
 while ($r = $rs->fetch_assoc()) {
-	$id = $r['idProduct'] ?? ($r['id'] ?? '');
-	$name = $r['productName'] ?? '';
-	$price = $r['productPrice'] ?? '';
-	$salePrice = $r['salePrice'] ?? '';
-	$img = $r['image'] ?? '';
-	$type = $r['typeName'] ?? ($r['idType'] ?? '');
 
-	$imgHtml = $img ? "<img src='image/".htmlspecialchars($img)."' width='60' />" : "";
-	echo "<tr>";
-	echo "<td>".htmlspecialchars($id)."</td>";
-	echo "<td>".htmlspecialchars($name)."</td>";
-	echo "<td>".htmlspecialchars($price)."</td>";
-	echo "<td>".htmlspecialchars($salePrice)."</td>";
-	echo "<td>".$imgHtml."</td>";
-	echo "<td>".htmlspecialchars($type)."</td>";
-	echo "</tr>";
+	$imgHtml = $r['image'] ? "<img src='image/".$r['image']."' width='60' />" : "";
+	echo "<tr>
+	<td>".$r['idProduct']."</td>
+	<td>".$r['productName']."</td>
+	<td>".$r['productPrice']."</td>
+	<td>".$r['salePrice']."</td>
+	<td>".$imgHtml."</td>
+	<td>".$r['typeName']."</td>
+	<td> <a href='?suasp&id=" . $r["idProduct"] . "'>Sửa</a> | 
+                    <a href='?xoasp&id=" . $r["idProduct"] . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa sản phẩm này không?\")'>Xóa</a>
+                </td>
+	</tr>";
+
 }
-echo "</table>";
+echo "</table>";	
+

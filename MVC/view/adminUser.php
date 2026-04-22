@@ -17,10 +17,7 @@ echo "<tr>
 <th>Vai trò</th>
 </tr>";
 while ($r = $rs->fetch_assoc()) {
-	$id = $r['id'] ??'';
-	$name = $r['username'] ?? '';
-    $idRole = $r['nameRole'] ?? '';
-	echo "<tr><td>".$id."</td><td>".$name."</td><td>".$idRole."</td></tr>";
+	echo "<tr><td>".$r['id']."</td><td>".$r['username'] ."</td><td>".$r['nameRole']."</td></tr>";
 }
 echo "</table>";
 

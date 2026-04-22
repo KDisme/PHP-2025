@@ -10,11 +10,16 @@ if (!$rs) {
 
 echo "<table class='admin-table'>";
 echo "<tr>
-<th>ID</th><th>Tên thương hiệu</th>
+<th>ID</th>
+<th>Tên thương hiệu</th>
+<th>Thao Tác</th>
 </tr>";
 while ($r = $rs->fetch_assoc()) {
-	$id = $r['idType'] ?? $r['id'] ?? '';
-	$name = $r['typeName'] ?? '';
-	echo "<tr><td>".htmlspecialchars($id)."</td><td>".htmlspecialchars($name)."</td></tr>";
+	echo "<tr>
+			<td>".$r['idType']."</td>
+			<td>".$r['typeName']."</td>
+			<td> <a href='?suath&id=".$r["idType"]."'>Sửa</a> | 
+			<a href='?xoath&id=".$r["idType"]."'>Xóa</a> </td>
+		</tr>";
 }
 echo "</table>";

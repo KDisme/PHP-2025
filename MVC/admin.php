@@ -69,6 +69,11 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] == 3) {
 						echo "<h3>Thêm người dùng</h3>";
 						include_once("view/adminAddUser.php");
 				}
+				elseif(isset($_REQUEST['suasp'])){
+						include_once("view/updateProduct.php");
+				}elseif(isset($_REQUEST['xoasp'])){
+						include_once("view/deleteProduct.php");
+				}
 					
 				
 				else {
