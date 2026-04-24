@@ -62,9 +62,9 @@ Thương Hiệu  <select name="txtType" id="txtType"value="<?php if (isset($type
             $_REQUEST['txtType']
         );
     if($ketqua){
-        echo"<script>alert('Cap Nhat san pham thanh cong!'); window.location.href='admin.php?sanpham' </script>";
+        echo"<script>alert('Cập nhật sản phẩm thành công!'); window.location.href='admin.php?sanpham' </script>";
     }else{
-        echo"<script>alert('Cap Nhat san pham khong thanh cong!'); window.location.href='admin.php?suasp' </script>";
+        echo"<script>alert('Cập nhật sản phẩm không thành công!'); window.location.href='admin.php?suasp' </script>";
     }
 
     }

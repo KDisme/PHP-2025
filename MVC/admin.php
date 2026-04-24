@@ -73,6 +73,10 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] == 3) {
 						include_once("view/updateProduct.php");
 				}elseif(isset($_REQUEST['xoasp'])){
 						include_once("view/deleteProduct.php");
+				}elseif(isset($_REQUEST['suath'])){
+						include_once("view/updateType.php");
+				}elseif(isset($_REQUEST['xoath'])){
+						include_once("view/deleteType.php");
 				}
 					
 				

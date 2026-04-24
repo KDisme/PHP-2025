@@ -4,9 +4,9 @@ include_once("controller/cType.php");
 ?>
 <form action="#" method="post" enctype="multipart/form-data">
 <h2>Thêm Sản Phẩm</h2>
-Tên Sản phẩm  <input type="text" name="txtName"> <br>
-Giá Gốc <input type="text" name="txtPrice"> <br>
-Giá Bán <input type="text" name ="txtSalePrice">  <br>
+Tên Sản phẩm  <input type="text" name="txtName" required placeholder="Nhập tên sản phẩm"> <br>
+Giá Gốc <input type="text" name="txtPrice"required placeholder="Nhập giá gốc sản phẩm" min="0"> <br>
+Giá Bán <input type="text" name ="txtSalePrice"required placeholder="Nhập giá bán sản phẩm" min="0">  <br>
 Ảnh sản phẩm <input type="file" name="fileImage" id ="fileImage" > <br>
 Thương Hiệu  <select name="txtType" id="txtType">
     <option value="" selected></option>
