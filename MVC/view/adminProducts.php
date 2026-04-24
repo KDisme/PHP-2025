@@ -17,10 +17,10 @@ if(!$rs){
 }
 
 echo "<table class='admin-table'>";
-echo "<tr><th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Giá sale</th><th>Hình</th><th>Loại</th><th>Thao tác</th></tr>";
+echo "<tr><th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Giá sale</th><th>Hình</th><th>Loại</th><th class='action-cell'>Thao tác</th></tr>";
 while ($r = $rs->fetch_assoc()) {
 
-	$imgHtml = $r['image'] ? "<img src='image/".$r['image']."' width='60' />" : "";
+	$imgHtml = $r['image'] ? "<img src='image/".$r['image']."?v=".time()."' width='60' />" : "";
 	echo "<tr>
 	<td>".$r['idProduct']."</td>
 	<td>".$r['productName']."</td>
@@ -28,8 +28,8 @@ while ($r = $rs->fetch_assoc()) {
 	<td>".$r['salePrice']."</td>
 	<td>".$imgHtml."</td>
 	<td>".$r['typeName']."</td>
-	<td> <a href='?suasp&id=" . $r["idProduct"] . "'>Sửa</a> | 
-                    <a href='?xoasp&id=" . $r["idProduct"] . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa sản phẩm này không?\")'>Xóa</a>
+	<td class='action-cell'><a href='?suasp&id=" . $r["idProduct"] . "'>Sửa</a> | 
+    <a href='?xoasp&id=" . $r["idProduct"] . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa sản phẩm này không?\")'>Xóa</a>
                 </td>
 	</tr>";
 

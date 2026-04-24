@@ -14,7 +14,8 @@ $currentKeyword = isset($_GET['ten']) ? $_GET['ten'] : '';
 <form method="get" action="<?php echo htmlspecialchars($action); ?>">
     <?php if ($isAdmin) { ?>
         <input type="hidden" name="sanpham" value="1">
-    <?php } ?>
+    <?php
+}?>
     <input type="text" name="ten" placeholder="Nhập từ khóa tìm kiếm..." value="<?php echo htmlspecialchars($currentKeyword); ?>" required>
     <input type="submit" value="Tìm" name="btnTimkiem">
 </form>

@@ -3,8 +3,8 @@ include_once("controller/cUser.php")
 ?>
 
 <form action="" method="POST">
-    Username: <input type="text" name ="txtusername"><br>
-    Password: <input type="password" name ="txtpassword"> <br>
+    Username: <input type="text" name ="txtusername" placeholder="Username" required><br>
+    Password: <input type="password" name ="txtpassword" placeholder="Password" required> <br>
     Role  <select name="txtRole" id="txtRole">
 <?php
     $p = new cUser();

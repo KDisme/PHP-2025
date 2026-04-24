@@ -18,8 +18,8 @@ while ($r = $rs->fetch_assoc()) {
 	echo "<tr>
 			<td>".$r['idType']."</td>
 			<td>".$r['typeName']."</td>
-			<td> <a href='?suath&id=".$r["idType"]."'>Sửa</a> | 
-			<a href='?xoath&id=".$r["idType"]."'onclick='return confirm(\"Bạn có chắc chắn muốn xóa thương hiệu này không?\")'>Xóa</a> </td>
+			<td class='action-cell'> <a href='?suath&id=".$r["idType"]."'>Sửa</a> | 
+			<a href='?xoath&id=".$r["idType"]."' onclick='return confirm(\"Bạn có chắc chắn muốn xóa thương hiệu này không?\")'>Xóa</a> </td>
 		</tr>";
 }
 echo "</table>";
